@@ -18,7 +18,7 @@ def search():
 	schema = PublicationSchema(many=True)
 	query = request.args.get("q")
 	if query is None:
-		return "<h1>No search query</h1>"
+		return "<h1>No query</h1>"
 
 	pubs = schema.dump(
 		filter(lambda t: query in t.title, data)
