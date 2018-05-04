@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 
-from models.publication import Publication, PublicationSchema
+from robopubs.models.publication import Publication, PublicationSchema
 
 app = Flask(__name__)
 
