@@ -1,7 +1,5 @@
-from flask_sqlalchemy import SQLAlchemy
+from robopubs.database import db
 from marshmallow_sqlalchemy import ModelSchema
-
-db = SQLAlchemy()
 
 class Publication(db.Model):
 	id = db.Column(db.Integer, primary_key=True)

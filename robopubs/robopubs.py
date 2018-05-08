@@ -1,12 +1,13 @@
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 
+from robopubs.database import db
 from robopubs.models import Publication, PublicationSchema
 
 app = Flask(__name__)
 app.config.from_object('robopubs.default_settings')
 app.config.from_envvar('ROBOPUBS_SETTINGS')
-db = SQLAlchemy(app)
+db.init_app(app)
 
 @app.route("/")
 def index():
