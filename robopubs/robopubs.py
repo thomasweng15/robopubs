@@ -18,7 +18,7 @@ def get_pubs():
 	pubs = Publication.query.all()
 	schema = PublicationSchema(many=True)
 	dump = schema.dump(pubs)
-	return jsonify(dump.data)
+	return jsonify({'publications': dump.data})
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0')
