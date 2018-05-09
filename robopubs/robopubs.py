@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 import os
@@ -18,7 +18,7 @@ db.init_app(app)
 
 @app.route("/")
 def index():
-	return "<h1>Hello World!</h1>"
+	return render_template('index.html', name='index')
 
 @app.route('/api/v1.0/pubs', methods=['GET'])
 def get_pubs():
