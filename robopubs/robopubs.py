@@ -1,12 +1,19 @@
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 
+import os
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
+
 from robopubs.database import db
 from robopubs.models import Publication, PublicationSchema
 
 app = Flask(__name__)
-app.config.from_object('robopubs.default_settings')
-app.config.from_envvar('ROBOPUBS_SETTINGS')
+app.config.update(
+	DEBUG = os.getenv('DEBUG'),
+	SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI'),
+	SQLALCHEMY_TRACK_MODIFICATIONS=os.getenv('SQLALCHEMY_TRACK_MODIFICATIONS')
+)
 db.init_app(app)
 
 @app.route("/")

@@ -16,8 +16,9 @@ pluggy==0.6.0
 py==1.5.3
 pytest==3.5.1
 python-dateutil==2.7.2
+python-dotenv==0.8.2
 python-editor==1.0.3
--e git+git@github.com:thomasweng15/robopubs.git@b8f25bf66f8567eeed1b8b110f9c0c368eccaace#egg=robopubs
+-e git+git@github.com:thomasweng15/robopubs.git@ef62067fdd8217909d998e1c16d20800f715a695#egg=robopubs
 six==1.11.0
 SQLAlchemy==1.2.7
 uWSGI==2.0.17
