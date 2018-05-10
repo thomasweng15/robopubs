@@ -10,5 +10,9 @@ before-script:
 services:
   - mysql
 
+before_script:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS Publications;'
+  - python "$TRAVIS_BUILD_DIR/scripts/populate_db.py"
+
 script:
   pytest -v
