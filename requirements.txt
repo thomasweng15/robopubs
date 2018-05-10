@@ -18,7 +18,7 @@ pytest==3.5.1
 python-dateutil==2.7.2
 python-dotenv==0.8.2
 python-editor==1.0.3
--e git+https://github.com/thomasweng15/robopubs.git@ef62067fdd8217909d998e1c16d20800f715a695#egg=robopubs
+robopubs==0.0.0
 six==1.11.0
 SQLAlchemy==1.2.7
 uWSGI==2.0.17
