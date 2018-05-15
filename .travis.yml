@@ -19,7 +19,7 @@ script:
   # Add gcloud to $PATH
   - source /home/travis/google-cloud-sdk/path.bash.inc
   - gcloud version
-  - gcloud auth activate-service-account --key-file secrets/service_api_key.json  
+  - gcloud auth activate-service-account --key-file service_api_key.json  
   - gcloud compute config-ssh
   - pytest -v
 notifications:
@@ -30,7 +30,7 @@ before_install:
 - tar xvf secrets.tar
 after_success:
 - eval "$(ssh-agent -s)"
-- chmod 600 secrets/id_rsa
-- ssh-add secrets/id_rsa
+- chmod 600 id_rsa
+- ssh-add id_rsa
 - git remote add deploy thomas_weng11@instance-1.us-central1-f.api-project-371041928874:/home/thomas_weng11/robopubs.git
 - git push deploy HEAD:master
