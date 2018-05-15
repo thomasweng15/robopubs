@@ -10,11 +10,6 @@ services:
 - mysql
 before_script:
 - mysql -e 'CREATE DATABASE IF NOT EXISTS Publications;'
-cache:
-  directories:
-  - "$HOME/google-cloud-sdk/"
-script:
-- pytest -v
 - gcloud version || true
 - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
 # Add gcloud to $PATH
@@ -22,6 +17,11 @@ script:
 - gcloud version
 - gcloud auth activate-service-account --key-file secrets/service_api_key.json  
 - gcloud compute config-ssh
+cache:
+  directories:
+  - "$HOME/google-cloud-sdk/"
+script:
+- pytest -v
 notifications:
   email: false
 before_install:
