@@ -4,7 +4,6 @@ python:
 - 3.6
 install: 
 - pip install -r requirements.txt -e "$TRAVIS_BUILD_DIR"
-- echo $GCLOUD_PUB_KEY >> $HOME/.ssh/known_hosts
 services:
 - mysql
 before_script:
@@ -33,3 +32,5 @@ after_success:
 - ssh-add id_rsa
 - git remote add deploy thomas_weng11@instance-1.us-central1-f.api-project-371041928874:/home/thomas_weng11/robopubs.git
 - git push deploy HEAD:master
+addons:
+  ssh_known_hosts: instance-1.us-central1-f.api-project-371041928874
