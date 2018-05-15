@@ -22,10 +22,10 @@ before_install:
 after_success:
 - eval "$(ssh-agent -s)"
 - chmod 600 id_rsa
-# - ssh-add id_rsa
 - mkdir /home/travis/.ssh/google_compute_engine
 - cp id_rsa /home/travis/.ssh/google_compute_engine/google_compute_engine
 - cp id_rsa.pub /home/travis/.ssh/google_compute_engine/google_compute_engine.pub
+- ssh-add /home/travis/.ssh/google_compute_engine/google_compute_engine
 - gcloud version || true
 - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export
   CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
