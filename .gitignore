@@ -105,3 +105,4 @@ robopubsenv/
 
 .pytest_cache/
 
+secrets/

@@ -14,11 +14,14 @@ script: pytest -v
 notifications:
   email: false
 before_install:
-- openssl aes-256-cbc -K $encrypted_d7276a23c022_key -iv $encrypted_d7276a23c022_iv
-  -in .travis/id_rsa.enc -out .travis/id_rsa -d
+- openssl aes-256-cbc -K $encrypted_3df81cd2614d_key -iv $encrypted_3df81cd2614d_iv
+  -in .travis/secrets.tar.enc -out secrets.tar -d
+- tar xvf secrets.tar
+- gcloud auth activate-service-account --key-file secrets/service_api_key.json  
+- gcloud compute config-ssh
 after_success:
-  - eval "$(ssh-agent -s)" #start the ssh agent
-  - chmod 600 .travis/id_rsa # this key should have push access
-  - ssh-add .travis/id_rsa
-  - git remote add deploy thomas_weng11@instance-1.us-central1-f.api-project-371041928874:/home/thomas_weng11/robopubs.git 
-  - git push deploy HEAD:master
+- eval "$(ssh-agent -s)"
+- chmod 600 secrets/id_rsa
+- ssh-add secrets/id_rsa
+- git remote add deploy thomas_weng11@instance-1.us-central1-f.api-project-371041928874:/home/thomas_weng11/robopubs.git
+- git push deploy HEAD:master
