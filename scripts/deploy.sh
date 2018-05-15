@@ -8,5 +8,4 @@ source /home/travis/google-cloud-sdk/path.bash.inc
 gcloud auth activate-service-account --key-file service_api_key.json
 gcloud compute config-ssh
 git remote add deploy thomas_weng11@instance-1.us-central1-f.api-project-371041928874:/home/thomas_weng11/robopubs.git
-GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
-git push deploy HEAD:master
+GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git push deploy HEAD:master
