@@ -21,4 +21,4 @@ after_success:
   - chmod 600 .travis/id_rsa # this key should have push access
   - ssh-add .travis/id_rsa
   - git remote add deploy thomas_weng11@instance-1.us-central1-f.api-project-371041928874:/home/thomas_weng11/robopubs.git 
-  - git push deploy
+  - git push deploy HEAD:master
