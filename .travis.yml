@@ -8,6 +8,7 @@ services:
 - mysql
 before_script:
 - mysql -e 'CREATE DATABASE IF NOT EXISTS Publications;'
+- echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 cache:
   directories:
     - "$HOME/google-cloud-sdk/"
@@ -33,5 +34,3 @@ after_success:
 - ssh-add id_rsa
 - git remote add deploy thomas_weng11@instance-1.us-central1-f.api-project-371041928874:/home/thomas_weng11/robopubs.git
 - git push deploy HEAD:master
-addons:
-  ssh_known_hosts: compute.3635244279851054167
