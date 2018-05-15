@@ -25,6 +25,7 @@ after_success:
 - cp google_compute_engine /home/travis/.ssh/google_compute_engine
 - cp google_compute_engine.pub /home/travis/.ssh/google_compute_engine.pub
 - chmod 600 /home/travis/.ssh/google_compute_engine
+- ls -l /home/travis/.ssh/
 - ssh-add /home/travis/.ssh/google_compute_engine
 - gcloud version || true
 - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export
