@@ -22,6 +22,7 @@ before_install:
   -in .travis/secrets.tar.enc -out secrets.tar -d
 - tar xvf secrets.tar
 deploy:
+  skip_cleanup: true
   provider: script
   script: bash scripts/deploy.sh
   on:
