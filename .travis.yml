@@ -3,6 +3,7 @@ language: python
 python:
 - 3.6
 install:
+- pip install -U pip wheel
 - pip install -r requirements.txt -e "$TRAVIS_BUILD_DIR"
 services:
 - mysql
@@ -11,6 +12,7 @@ before_script:
 cache:
   directories:
   - "$HOME/google-cloud-sdk/"
+  - "$HOME/.cache/pip"
 script:
 - pytest -v
 notifications:
