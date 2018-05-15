@@ -25,6 +25,7 @@ after_success:
 # - ssh-add id_rsa
 - mkdir $HOME/.ssh/google_compute_engine
 - cp id_rsa $HOME/.ssh/google_compute_engine/
+- cp id_rsa.pub $HOME/.ssh/google_compute_engine/
 - gcloud version || true
 - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export
   CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
