@@ -4,7 +4,7 @@ python:
 - 3.6
 install: 
 - pip install -r requirements.txt -e "$TRAVIS_BUILD_DIR"
-- echo '$GCLOUD_PUB_KEY' >> $HOME/.ssh/known_hosts
+- echo $GCLOUD_PUB_KEY >> $HOME/.ssh/known_hosts
 services:
 - mysql
 before_script:
