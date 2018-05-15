@@ -15,10 +15,10 @@ notifications:
   email: false
 before_install:
 - openssl aes-256-cbc -K $encrypted_d7276a23c022_key -iv $encrypted_d7276a23c022_iv
-  -in .travis/id_rsa.enc -out ~\/.ssh/id_rsa -d
+  -in .travis/id_rsa.enc -out .travis/id_rsa -d
 after_success:
   - eval "$(ssh-agent -s)" #start the ssh agent
-  - chmod 600 ~\/.ssh/id_rsa # this key should have push access
-  - ssh-add ~\/.ssh/id_rsa
+  - chmod 600 .travis/id_rsa # this key should have push access
+  - ssh-add .travis/id_rsa
   - git remote add deploy thomas_weng11@instance-1.us-central1-f.api-project-371041928874:/home/thomas_weng11/robopubs.git 
   - git push deploy
