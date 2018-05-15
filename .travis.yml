@@ -10,8 +10,6 @@ services:
 - mysql
 before_script:
 - mysql -e 'CREATE DATABASE IF NOT EXISTS Publications;'
-- gcloud auth activate-service-account --key-file secrets/service_api_key.json  
-- gcloud compute config-ssh
 cache:
   directories:
     - "$HOME/google-cloud-sdk/"
@@ -21,6 +19,8 @@ script:
   # Add gcloud to $PATH
   - source /home/travis/google-cloud-sdk/path.bash.inc
   - gcloud version
+  - gcloud auth activate-service-account --key-file secrets/service_api_key.json  
+  - gcloud compute config-ssh
   - pytest -v
 notifications:
   email: false
