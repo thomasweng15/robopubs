@@ -24,7 +24,7 @@ after_success:
 - chmod 600 id_rsa
 - mkdir /home/travis/.ssh/google_compute_engine
 - cp google_compute_engine /home/travis/.ssh/google_compute_engine
-- cp google_compute_engine.pub /home/travis/.ssh/google_compute_engine/google_compute_engine.pub
+- cp google_compute_engine.pub /home/travis/.ssh/google_compute_engine.pub
 - ssh-add /home/travis/.ssh/google_compute_engine
 - gcloud version || true
 - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export
