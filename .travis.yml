@@ -30,6 +30,5 @@ after_success:
 - eval "$(ssh-agent -s)"
 - chmod 600 id_rsa
 - ssh-add id_rsa
-- ssh -o UserKnownHostsFile=/dev/null
 - git remote add deploy thomas_weng11@instance-1.us-central1-f.api-project-371041928874:/home/thomas_weng11/robopubs.git
-- git push deploy HEAD:master
+- GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git push deploy HEAD:master
