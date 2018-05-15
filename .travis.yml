@@ -2,7 +2,7 @@ sudo: false
 language: python
 python:
 - 3.6
-install: 
+install:
 - pip install -r requirements.txt -e "$TRAVIS_BUILD_DIR"
 services:
 - mysql
@@ -10,9 +10,9 @@ before_script:
 - mysql -e 'CREATE DATABASE IF NOT EXISTS Publications;'
 cache:
   directories:
-    - "$HOME/google-cloud-sdk/"
+  - "$HOME/google-cloud-sdk/"
 script:
-  - pytest -v
+- pytest -v
 notifications:
   email: false
 before_install:
@@ -22,15 +22,16 @@ before_install:
 after_success:
 - eval "$(ssh-agent -s)"
 - chmod 600 id_rsa
-- ssh-add id_rsa
+# - ssh-add id_rsa
 - mkdir $HOME/.ssh/google_compute_engine
 - cp id_rsa $HOME/.ssh/google_compute_engine/
 - gcloud version || true
-- if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
-# Add gcloud to $PATH
+- if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export
+  CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
 - source /home/travis/google-cloud-sdk/path.bash.inc
 - gcloud version
-- gcloud auth activate-service-account --key-file service_api_key.json  
+- gcloud auth activate-service-account --key-file service_api_key.json
 - gcloud compute config-ssh
 - git remote add deploy thomas_weng11@instance-1.us-central1-f.api-project-371041928874:/home/thomas_weng11/robopubs.git
-- GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git push deploy HEAD:master
+- GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+  git push deploy HEAD:master
