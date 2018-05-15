@@ -4,11 +4,11 @@ python:
 - 3.6
 install: 
 - pip install -r requirements.txt -e "$TRAVIS_BUILD_DIR"
+- echo 'compute.3635244279851054167 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBI8W61wG42VRoXcWmqiDblxUehQGrSbz95YtgNK3U1+StrQODw3FppiDenpLuOws4TwCN8sbhSnZBhBfnWZO2qo='  >> ~/.ssh/known_hosts
 services:
 - mysql
 before_script:
 - mysql -e 'CREATE DATABASE IF NOT EXISTS Publications;'
-- echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 cache:
   directories:
     - "$HOME/google-cloud-sdk/"
