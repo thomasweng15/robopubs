@@ -11,6 +11,7 @@ before_script:
 cache:
   directories:
     - "$HOME/google-cloud-sdk/"
+    - "$HOME/travis/.ssh/"
 script:
   - gcloud version || true
   - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
@@ -33,4 +34,4 @@ after_success:
 - git remote add deploy thomas_weng11@instance-1.us-central1-f.api-project-371041928874:/home/thomas_weng11/robopubs.git
 - git push deploy HEAD:master
 addons:
-  ssh_known_hosts: instance-1.us-central1-f.api-project-371041928874
+  ssh_known_hosts: compute.3635244279851054167
